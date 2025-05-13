@@ -4,7 +4,7 @@ from scripts.logging_config import setup_logger
 from scripts.step3_folding.folding_scripts.pipeline import run 
 
 
-def main(pdb_code, batch_size):
+def main(pdb_code, batch_size, beta_values=None):
     pdb_code = pdb_code.lower()
     logger = setup_logger("folding_driver", pdb_code)
 
@@ -15,7 +15,11 @@ def main(pdb_code, batch_size):
         logger.error(f"Mutation folder not found: {mutation_base_dir}")
         return
 
-    beta_dirs = [d for d in os.listdir(mutation_base_dir) if d.startswith("beta_")]
+    if beta_values:
+        beta_dirs = [f"beta_{b}" for b in beta_values]
+    else:
+        beta_dirs = [d for d in os.listdir(mutation_base_dir) if d.startswith("beta_")]
+
 
     if not beta_dirs:
         logger.error(f"No beta_* folders found in {mutation_base_dir}")
@@ -53,6 +57,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Run folding for all beta folders.")
     parser.add_argument("--pdb", required=True, help="PDB code (e.g. 1bn7)")
     parser.add_argument("--batch_size", type=int, default=4, help="Batch size for inference")
-
+    parser.add_argument("--betas", nargs="*", help="List of beta values to process (e.g. 20.0 50.0)")
+    
     args = parser.parse_args()
     main(pdb_code=args.pdb, batch_size=args.batch_size)
