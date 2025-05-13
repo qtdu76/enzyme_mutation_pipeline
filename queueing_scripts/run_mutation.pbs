@@ -1,0 +1,20 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=4:mem=16gb:ngpus=1
+#PBS -l walltime=03:00:00
+#PBS -N mutation
+#PBS -o logs/mutation.out
+#PBS -e logs/mutation.err
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+module load CUDA/11.8.0
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate wateva
+
+export PYTHONPATH=$PYTHONPATH:/rds/general/user/qt121/home/pipeline/scripts
+
+# Run the mutation script
+python scripts/step2_mutation/mutation_scripts/run_mutation.py --pdb 1ua7 --device gpu --betas 500 1000 --iterations 10000
+
+# notes: for analysis to work, go to analyze script, change which indices are used

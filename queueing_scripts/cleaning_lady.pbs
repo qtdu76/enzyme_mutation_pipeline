@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=4:mem=16gb:ngpus=1
+#PBS -l walltime=06:00:00
+#PBS -N folding_6eqe
+#PBS -o logs/folding.out
+#PBS -e logs/folding.err
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+module load CUDA/11.8.0
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate wateva
+
+# Run folding across all betas for given PDB
+python -m scripts.step3_folding.folding_scripts.run_folding --pdb 1ua7 --batch_size 1

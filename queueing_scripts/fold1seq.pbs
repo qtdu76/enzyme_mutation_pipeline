@@ -1,0 +1,27 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=4:mem=16gb:ngpus=1
+#PBS -l walltime=00:20:00
+#PBS -o logs/fold1seq.log
+#PBS -e logs/fold1seq_error.log
+#PBS -N fold_1seq  
+
+cd $PBS_O_WORKDIR
+
+# Load necessary modules and activate the environment
+module load tools/prod
+module load CUDA/11.8.0
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate wateva
+
+# === MODES OF USE ===
+# Option 1: Fold by 4-letter code from a FASTA file
+# python scripts/tools/fold1seq.py --code 6eqe --folder /rds/general/user/qt121/home/analySIS/INPUTS/REF_sequences
+#
+# Option 2: Fold by directly pasted sequence
+# python scripts/tools/fold1seq.py --sequence CLMWQKVSMNFL... --name mutant_PETase
+# =====================
+
+# Run the master analysis script
+#python scripts/tools/fold1seq.py --sequence TNPYARGPNPTAASLEASAGPFTVRSFTVSRPSGYGAGTVYYPTNAGGTVGAIAIVPGYTARQSSIKWWGPRLASHGFVVITIDTNSTLDQPSSRSSQQMAALRQVASLNGTSSSPIYGKVDTARMGVMGWSMGGGGSLISAANNPSLKAAAPQAPWDSSTNFSSVTVPTLIFACENDSIAPVNSSALPIYDSMSRNAKQFLEINGGSHSCANSGNSNQALIGKKGVAWMKRFMDNDTRYSTFACENPNSTRVSDFRTANCSLE --name shortened_PETase
+python scripts/tools/fold1seq.py --code 1ua7 --folder /rds/general/user/qt121/home/analySIS/INPUTS/REF_sequences
+

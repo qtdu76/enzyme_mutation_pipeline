@@ -1,0 +1,16 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=4:mem=16gb
+#PBS -l walltime=01:00:00
+#PBS -N analysis
+#PBS -o logs/analysis.out
+#PBS -e logs/analysis.err
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate wateva
+
+# Run analysis script
+python -m scripts.step4_data_analysis.analysis_scripts.run_analysis --pdb 6eqe --beta 133.4 --ref_type esm        # or --ref_type pdb
+

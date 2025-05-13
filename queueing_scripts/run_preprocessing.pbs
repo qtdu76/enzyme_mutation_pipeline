@@ -1,0 +1,19 @@
+#!/bin/bash
+#PBS -l select=1:ncpus=2:mem=8gb
+#PBS -l walltime=00:10:00
+#PBS -N 6eqe
+#PBS -o logs/preprocess.out
+#PBS -e logs/preprocess.err
+
+cd $PBS_O_WORKDIR
+
+module load tools/prod
+eval "$(~/miniforge3/bin/conda shell.bash hook)"
+conda activate wateva
+
+export PYTHONPATH=$PYTHONPATH:/rds/general/user/qt121/home/pipeline/scripts
+
+PDB_CODE="1ua7" # Replace with your PDB code (lower case)
+
+# Run the driver script
+python scripts/step1_preprocessing/run_preprocessing.py "$PDB_CODE"

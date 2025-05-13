@@ -1,0 +1,15 @@
+# Ignore results
+output/
+
+# Ignore logs
+logs/
+pipeline_logs/
+
+# Igonre trash
+trash/
+
+__pycache__/
+
+# Ignore the esm2 models, they are from transformers
+# I just downloaded them so I dont have to download them every time I run a simulation
+scripts/step2_mutation/esm2_models
