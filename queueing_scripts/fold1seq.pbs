@@ -15,7 +15,7 @@ conda activate wateva
 
 # === MODES OF USE ===
 # Option 1: Fold by 4-letter code from a FASTA file
-# python scripts/tools/fold1seq.py --code 6eqe --folder /rds/general/user/qt121/home/analySIS/INPUTS/REF_sequences
+# python scripts/tools/fold1seq.py --code 6eqe --folder /rds/general/user/qt121/home/pipeline/INPUTS/REF_sequences
 #
 # Option 2: Fold by directly pasted sequence
 # python scripts/tools/fold1seq.py --sequence CLMWQKVSMNFL... --name mutant_PETase
@@ -23,5 +23,5 @@ conda activate wateva
 
 # Run the master analysis script
 #python scripts/tools/fold1seq.py --sequence TNPYARGPNPTAASLEASAGPFTVRSFTVSRPSGYGAGTVYYPTNAGGTVGAIAIVPGYTARQSSIKWWGPRLASHGFVVITIDTNSTLDQPSSRSSQQMAALRQVASLNGTSSSPIYGKVDTARMGVMGWSMGGGGSLISAANNPSLKAAAPQAPWDSSTNFSSVTVPTLIFACENDSIAPVNSSALPIYDSMSRNAKQFLEINGGSHSCANSGNSNQALIGKKGVAWMKRFMDNDTRYSTFACENPNSTRVSDFRTANCSLE --name shortened_PETase
-python scripts/tools/fold1seq.py --code 1ua7 --folder /rds/general/user/qt121/home/analySIS/INPUTS/REF_sequences
+python scripts/tools/fold1seq.py --code 1ua7 --folder /rds/general/user/qt121/home/pipeline/INPUTS/REF_sequences
 

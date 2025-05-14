@@ -1,5 +1,5 @@
 #!/bin/bash
-#PBS -l select=1:ncpus=4:mem=16gb:ngpus=1
+#PBS -l select=1:ncpus=4:mem=20gb:ngpus=1
 #PBS -l walltime=59:00:00
 #PBS -N folding_1ua7
 #PBS -o logs/folding.out
@@ -13,7 +13,7 @@ eval "$(~/miniforge3/bin/conda shell.bash hook)"
 conda activate wateva
 
 # Run folding across all betas for given PDB
-python -m scripts.step3_folding.folding_scripts.run_folding --pdb 1ua7 --batch_size 1 --betas 100.0 500.0 1000.0 
+python -m scripts.step3_folding.folding_scripts.run_folding --pdb 1ua7 --batch_size 1 --betas 1000.0 500.0 100.0 
 
 # If --betas is provided (e.g. --betas 20.0 50.0), only those beta folders (beta_20.0, beta_50.0) will be processed.
 # If --betas is omitted entirely, all beta_* folders in the mutation directory will be processed.

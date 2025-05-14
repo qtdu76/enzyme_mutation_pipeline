@@ -12,5 +12,6 @@ eval "$(~/miniforge3/bin/conda shell.bash hook)"
 conda activate wateva
 
 # Run analysis script
-python -m scripts.step4_data_analysis.analysis_scripts.run_analysis --pdb 6eqe --beta 133.4 --ref_type esm        # or --ref_type pdb
+python -m scripts.step4_data_analysis.analysis_scripts.run_analysis --pdb 1ua7 --beta 500.0 --ref_type esm        # or --ref_type pdb
 
+#idk if you can run multiple temperatures in this one. 

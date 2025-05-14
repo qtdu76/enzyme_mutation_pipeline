@@ -1,5 +1,9 @@
-# Ignore results
+# Ignore most results
 output/
+
+# dont ignore these results
+!output/1ua7/
+!output/1ua7/**
 
 # Ignore logs
 logs/
