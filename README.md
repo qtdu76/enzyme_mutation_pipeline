@@ -171,7 +171,7 @@ Cluster submission examples are provided in `queueing_scripts/` (`run_pipeline.p
 
 ## Citation
 
-If you use this code, cite your thesis/project and the underlying models:
+If you use this code, cite my Master Thesis and the underlying models:
 
 - ESM-2 protein language models
 - ESMFold
